@@ -4,6 +4,10 @@ import { useState } from "react"
 function ToDoForm({addTask}){
     const [userImput, setUserInput] = useState('')
     
+    // useEffect(() => {
+    //     console.log(userImput)
+    // }, [userImput])
+
     const handleChange = (e) => {
         setUserInput(e.currentTarget.value)
     }

@@ -1,9 +1,20 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import ToDo from './ToDo';
 import ToDoForm from './ToDoform';
 function App() {
+  // useState
   const [todos, setTodos] = useState([])
+
+  // useEffect
+  useEffect(() => {
+    const raw = localStorage.getItem('todos') || JSON.stringify([])
+    setTodos(JSON.parse(raw))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTask = (userImput) => {
     if(userImput) {
